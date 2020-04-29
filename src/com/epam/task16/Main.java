@@ -20,7 +20,7 @@ public class Main {
                 "прикосновения, оголив тёмные ветки. Но за ночь чародейка-зима всё исправит, чтобы утром все снова смогли насладиться" +
                 " первозданной красотой.");
 
-        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////1
         /*String[] paragraphsArray = split("\\s\\s", sbText);
 
         int[] sentencesAmount = new int[paragraphsArray.length];
@@ -60,10 +60,8 @@ public class Main {
         viewText(sbText);*/
         /////////////////////////////////////////////////////////////////////////
 
-        /*String regex = "\\p{Punct}";
-        Pattern pattern = Pattern.compile(regex);*/
-
-       /* String[] paragraphsArray = split("\\s\\s", sbText);
+        //////////////////////////////////////////////////////////////////////////////////////2
+        /* String[] paragraphsArray = split("\\s\\s", sbText);
 
         StringBuilder sb;
 
@@ -91,8 +89,40 @@ public class Main {
         }
 
         viewText(sbText2);*/
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        String regex = "\\p{Punct}";
+        Pattern pattern = Pattern.compile(regex);
+
+        String[] paragraphsArray = split("\\s\\s", sbText);
+
+        StringBuilder sb;
+
+        for (int i = 0; i < paragraphsArray.length; i++) {
+            sb = new StringBuilder(paragraphsArray[i]);
+            String[] sentencesArray = split("\\.|!|\\?", sb);
+
+            int countPunct = 0;
+
+            for (int j = 0; j < sentencesArray.length; j++) {
+                countPunct += sentencesArray[j].length();
+                sb = new StringBuilder(sentencesArray[j]);
+                String[] wordsArray = split("\\p{Blank}|\\,|\\- ", sb);
+                sortWordsByNumberOfEntries(wordsArray, 'о');
+                sentencesArray[j] = addToString(wordsArray, paragraphsArray[i].charAt(countPunct));
+                countPunct++;
+            }
 
 
+            paragraphsArray[i] = addToString(sentencesArray, ' ');
+        }
+
+        StringBuilder sbText2 = new StringBuilder();
+        for (int i = 0; i < paragraphsArray.length; i++) {
+            sbText2.append(paragraphsArray[i] + "\n\n");
+        }
+
+        viewText(sbText2);
 
     }
 
@@ -134,5 +164,42 @@ public class Main {
         sb.append(symbol);
 
         return sb.toString();
+    }
+
+    public static void sortWordsByNumberOfEntries(String[] array, char symbol) {
+        int[] numberOfEntriesArray = new int[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length(); j++) {
+                if (array[i].charAt(j) == symbol) {
+                    numberOfEntriesArray[i]++;
+                }
+            }
+        }
+
+        String tempStr;
+        int tempInt;
+
+        for (int count = 0; count < array.length; count++) {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (numberOfEntriesArray[i] > numberOfEntriesArray[i + 1]) {
+                    tempStr = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = tempStr;
+
+                    tempInt = numberOfEntriesArray[i];
+                    numberOfEntriesArray[i] = numberOfEntriesArray[i + 1];
+                    numberOfEntriesArray[i + 1] = tempInt;
+                } else {
+                    if (numberOfEntriesArray[i] == numberOfEntriesArray[i + 1] && numberOfEntriesArray[i] != 0) {
+                        if (array[i].compareToIgnoreCase(array[i + 1]) > 0) {
+                            tempStr = array[i];
+                            array[i] = array[i + 1];
+                            array[i + 1] = tempStr;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
