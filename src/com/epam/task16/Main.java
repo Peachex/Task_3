@@ -20,8 +20,9 @@ public class Main {
                 "прикосновения, оголив тёмные ветки. Но за ночь чародейка-зима всё исправит, чтобы утром все снова смогли насладиться" +
                 " первозданной красотой.");
 
-        ///////////////////////////////////////////////////////////////////////////////////////1
-        /*String[] paragraphsArray = split("\\s\\s", sbText);
+        //1
+        /*1
+        String[] paragraphsArray = split("\\s\\s", sbText);
 
         int[] sentencesAmount = new int[paragraphsArray.length];
         int sentencesCount = 0;
@@ -57,11 +58,12 @@ public class Main {
             sbText.append(paragraphsArray[i] + "\n\n");
         }
 
-        viewText(sbText);*/
-        /////////////////////////////////////////////////////////////////////////
+        viewText(sbText);
+        1*/
 
-        //////////////////////////////////////////////////////////////////////////////////////2
-        /* String[] paragraphsArray = split("\\s\\s", sbText);
+        //2
+        /*2
+         String[] paragraphsArray = split("\\s\\s", sbText);
 
         StringBuilder sb;
 
@@ -88,9 +90,11 @@ public class Main {
             sbText2.append(paragraphsArray[i] + "\n\n");
         }
 
-        viewText(sbText2);*/
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        viewText(sbText2);
+        2*/
 
+        //3
+        /*3
         String regex = "\\p{Punct}";
         Pattern pattern = Pattern.compile(regex);
 
@@ -123,6 +127,7 @@ public class Main {
         }
 
         viewText(sbText2);
+        3*/
 
     }
 
