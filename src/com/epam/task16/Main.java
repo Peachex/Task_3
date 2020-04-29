@@ -63,7 +63,7 @@ public class Main {
         /*String regex = "\\p{Punct}";
         Pattern pattern = Pattern.compile(regex);*/
 
-        String[] paragraphsArray = split("\\s\\s", sbText);
+       /* String[] paragraphsArray = split("\\s\\s", sbText);
 
         StringBuilder sb;
 
@@ -71,14 +71,18 @@ public class Main {
             sb = new StringBuilder(paragraphsArray[i]);
             String[] sentencesArray = split("\\.|!|\\?", sb);
 
+            int countPunct = 0;
+
             for (int j = 0; j < sentencesArray.length; j++) {
+                countPunct += sentencesArray[j].length();
                 sb = new StringBuilder(sentencesArray[j]);
                 String[] wordsArray = split("\\p{Blank}|\\,|\\- ", sb);
                 sortWordsByLength(wordsArray);
-                sentencesArray[j] = addToString(wordsArray, ' ');
+                sentencesArray[j] = addToString(wordsArray, paragraphsArray[i].charAt(countPunct));
+                countPunct++;
             }
 
-            paragraphsArray[i] = addToString(sentencesArray, '.');
+            paragraphsArray[i] = addToString(sentencesArray, ' ');
         }
 
         StringBuilder sbText2 = new StringBuilder();
@@ -86,7 +90,9 @@ public class Main {
             sbText2.append(paragraphsArray[i] + "\n\n");
         }
 
-        viewText(sbText2);
+        viewText(sbText2);*/
+
+
 
     }
 
@@ -118,8 +124,14 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < array.length; i++) {
-            sb.append(array[i] + symbol);
+            if (i < array.length - 1) {
+                sb.append(array[i] + " ");
+            } else {
+                sb.append(array[i]);
+            }
         }
+
+        sb.append(symbol);
 
         return sb.toString();
     }
