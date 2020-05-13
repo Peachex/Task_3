@@ -5,30 +5,38 @@ public class Main {
     public static void main(String[] args) {
         int size = 3;
         String[] camelCase = new String[size];
-        camelCase[0] = "findSpace";
+        camelCase[0] = "findOutExtraSpace";
         camelCase[1] = "maxElement";
-        camelCase[2] = "minElement";
+        camelCase[2] = "SNAKECASE";
 
-        String[] snake_case = new String[size];
+        String[] snakeCase = new String[size];
 
         for (int i = 0; i < size; i++) {
-            snake_case[i] = changeCase(camelCase, size, i);
-            System.out.println(camelCase[i] + "\t" + snake_case[i]);
+            snakeCase[i] = changeCase(camelCase[i]);
+            System.out.println(camelCase[i] + "\t" + snakeCase[i]);
         }
     }
 
-    public static String changeCase(String[] camelCase, int size, int index) {
-        char[] array = new char[camelCase[index].length() + 1];
+    public static String changeCase(String camelCase) {
+        int count = 0;
 
-        for (int i = 0; i < camelCase[index].length(); i++) {
-            array[i] = camelCase[index].charAt(i);
+        for (int i = 0; i < camelCase.length(); i++) {
+            if (camelCase.charAt(i) >= 'A' && camelCase.charAt(i) <= 'Z') {
+                count++;
+            }
+        }
+
+        char[] array = new char[camelCase.length() + count];
+
+        for (int i = 0; i < camelCase.length(); i++) {
+            array[i] = camelCase.charAt(i);
         }
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] >= 'A' && array[i] <= 'Z') {
                 swap(array, i);
                 array[i] = '_';
-                break;
+                array[i + 1] = (char) (array[i + 1] + 'a' - 'A');
             }
         }
 
