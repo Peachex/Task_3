@@ -7,22 +7,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String str = new String(in.nextLine());
 
-        int upperCaseAmount = 0;
-        int lowerCaseAmount = 0;
+        String str = in.nextLine();
 
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) > 64 && str.charAt(i) < 91) {
-                upperCaseAmount++;
-            } else {
-                if (str.charAt(i) > 96 && str.charAt(i) < 123) {
-                    lowerCaseAmount++;
-                }
-            }
-        }
+        String str1 = str.replaceAll("[a-z]", "");
+        String str2 = str.replaceAll("[A-Z]", "");
 
-        System.out.println("Количество прописных (больших) букв = " + upperCaseAmount);
-        System.out.println("Количество строчных (маленьких) букв = " + lowerCaseAmount);
+        System.out.println("Количество прописных (больших) букв = " + str1.length());
+        System.out.println("Количество строчных (маленьких) букв = " + str2.length());
     }
 }
