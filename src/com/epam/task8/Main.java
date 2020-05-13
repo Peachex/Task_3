@@ -3,28 +3,28 @@ package com.epam.task8;
 // 3. Проверить, является ли заданное слово палиндромом.
 public class Main {
     public static void main(String[] args) {
-        StringBuilder sb1 = new StringBuilder("Level");
-        StringBuilder sb2 = new StringBuilder("madam");
-        StringBuilder sb3 = new StringBuilder("dog");
+        String[] str = new String[3];
+        str[0] = "Level";
+        str[1] = "madam";
+        str[2] = "dog";
 
-        view(sb1);
-        view(sb2);
-        view(sb3);
+        view(str);
     }
 
-    public static boolean checkWord(StringBuilder sb) {
-        String str = sb.toString();
-        String strReverse = sb.reverse().toString();
-        sb.reverse();
+    public static boolean checkWord(String str) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(str);
 
-        return (str.compareToIgnoreCase(strReverse) == 0);
+        return (sb.reverse().toString().equalsIgnoreCase(str));
     }
 
-    public static void view(StringBuilder sb) {
-        if (checkWord(sb)) {
-            System.out.println("Слово \"" + sb + "\" является палиндромом.");
-        } else {
-            System.out.println("Слово \"" + sb + "\" не является палиндромом.");
+    public static void view(String[] strArray) {
+        for (int i = 0; i < strArray.length; i++) {
+            if (checkWord(strArray[i])) {
+                System.out.println("Слово \"" + strArray[i] + "\" является палиндромом.");
+            } else {
+                System.out.println("Слово \"" + strArray[i] + "\" не является палиндромом.");
+            }
         }
     }
 }
