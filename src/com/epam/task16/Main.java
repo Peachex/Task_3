@@ -116,7 +116,7 @@ public class Main {
 
         for (int count = 0; count < array.length; count++) {
             for (int i = 0; i < array.length - 1; i++) {
-                if (numberOfEntriesArray[i] > numberOfEntriesArray[i + 1]) {
+                if (numberOfEntriesArray[i] < numberOfEntriesArray[i + 1]) {
                     tempStr = array[i];
                     array[i] = array[i + 1];
                     array[i + 1] = tempStr;
