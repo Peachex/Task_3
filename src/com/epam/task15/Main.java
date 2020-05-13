@@ -7,20 +7,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+
         String str = in.nextLine();
 
-        System.out.println("Количество предложений = " + sentencesAmount(str));
-    }
+        String[] strArray1 = str.split("\\.");
+        String[] strArray2 = str.split("\\?");
+        String[] strArray3 = str.split("!");
 
-    public static int sentencesAmount(String str) {
-        int amount = 0;
-
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '.' || str.charAt(i) == '!' || str.charAt(i) == '?') {
-                amount++;
-            }
-        }
-
-        return amount;
+        System.out.println("Количество предложений = " + (strArray1.length + strArray2.length + strArray3.length - 3));
     }
 }
