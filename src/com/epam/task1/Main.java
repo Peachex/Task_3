@@ -32,8 +32,12 @@ public class Main {
             array[i] = camelCase.charAt(i);
         }
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 'A' && array[i] <= 'Z') {
+        if (array[0] >= 'A' && array[0] <= 'Z') {
+            array[0] = (char) (array[0] + 'a' - 'A');
+        }
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] >= 'A' && array[i] <= 'Z' && i != 0) {
                 swap(array, i);
                 array[i] = '_';
                 array[i + 1] = (char) (array[i + 1] + 'a' - 'A');
