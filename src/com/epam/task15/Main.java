@@ -10,10 +10,8 @@ public class Main {
 
         String str = in.nextLine();
 
-        String[] strArray1 = str.split("\\.");
-        String[] strArray2 = str.split("\\?");
-        String[] strArray3 = str.split("!");
+        String[] strArray1 = str.split("[.!?]");
 
-        System.out.println("Количество предложений = " + (strArray1.length + strArray2.length + strArray3.length - 3));
+        System.out.println("Количество предложений = " + ((strArray1.length) - 1));
     }
 }
