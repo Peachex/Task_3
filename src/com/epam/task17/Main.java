@@ -40,7 +40,8 @@ public class Main {
                 "   </note> \n" +
                 "</notes>";
 
-        String regex = "(<[a-z]+>)|(</[a-z]+>)|([А-Я].+[а-я][!]?)|(<.+id.+>)|(<[a-z]+/)";
+        String regex = "(<[a-z]+>|<[a-z]+.id.+>)|(</[a-z]+>)|([А-Я].+[а-я][!]?)|(<[a-z]+/)";
+
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);
@@ -56,11 +57,7 @@ public class Main {
                         System.out.println(matcher.group(3) + " - СОДЕРЖИМОЕ ТЕГА.");
                     } else {
                         if (matcher.group(4) != null) {
-                            System.out.println(matcher.group(4) + " - АТРИБУТ ТЕГА.");
-                        } else {
-                            if (matcher.group(5) != null) {
-                                System.out.println(matcher.group(5) + " - ТЕГ БЕЗ ТЕЛА.");
-                            }
+                            System.out.println(matcher.group(4) + " - ТЕГ БЕЗ ТЕЛА.");
                         }
                     }
                 }
@@ -68,3 +65,4 @@ public class Main {
         }
     }
 }
+
