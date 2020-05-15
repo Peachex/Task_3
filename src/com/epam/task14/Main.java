@@ -10,8 +10,8 @@ public class Main {
 
         String str = in.nextLine();
 
-        String str1 = str.replaceAll("[a-z]", "");
-        String str2 = str.replaceAll("[A-Z]", "");
+        String str1 = str.replaceAll("[^A-Z]", "");
+        String str2 = str.replaceAll("[^a-z]", "");
 
         System.out.println("Количество прописных (больших) букв = " + str1.length());
         System.out.println("Количество строчных (маленьких) букв = " + str2.length());
