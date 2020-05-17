@@ -7,32 +7,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder(in.nextLine());
 
-        deleteSpaces(sb);
-        deleteSameLetters(sb);
+        String str1 = in.nextLine();
+
+        deleteSameLetters(str1.replaceAll("\\p{Blank}", ""));
+    }
+
+    public static void deleteSameLetters(String str) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (!sb.toString().contains(String.valueOf(str.charAt(i)))) {
+                sb.append(str.charAt(i));
+            }
+        }
 
         System.out.println(sb);
     }
-
-    public static void deleteSpaces(StringBuilder sb) {
-        for (int i = 0; i < sb.length(); i++) {
-            if (sb.charAt(i) == ' ') {
-                sb.deleteCharAt(i);
-            }
-        }
-
-    }
-
-    public static void deleteSameLetters(StringBuilder sb) {
-        for (int i = 0; i < sb.length(); i++) {
-            for (int j = i + 1; j < sb.length(); j++) {
-                if (sb.charAt(i) == sb.charAt(j)) {
-                    sb.deleteCharAt(j);
-                    j--;
-                }
-            }
-        }
-    }
 }
-
