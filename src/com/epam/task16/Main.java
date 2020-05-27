@@ -41,7 +41,7 @@ public class Main {
         boolean flag2;
 
         while (flag1) {
-            System.out.println("1)Отсортировать абзацы по количеству предложений.\n2)Отсортировать в каждом предложении слова по длине.\n3)Отсортировать лексемы в предложении " +
+            System.out.println("\n1)Отсортировать абзацы по количеству предложений.\n2)Отсортировать в каждом предложении слова по длине.\n3)Отсортировать лексемы в предложении " +
                     "по убыванию количества вхождений заданного символа, а в случае равенства – по алфавиту.\n4)Выход.");
 
             point1 = in.nextInt();
@@ -131,7 +131,7 @@ public class Main {
                 int[] indexArray = new int[textArray[i][j].length];
 
                 for (int k = 0; k < textArray[i][j].length; k++) {
-                    numberOfEntriesArray[k] = numberOfEntries(textArray, i, j, k, character);
+                    numberOfEntriesArray[k] = numberOfEntries(textArray[i][j][k], character);
                     indexArray[k] = k;
                 }
 
@@ -145,16 +145,10 @@ public class Main {
         }
     }
 
-    public static int numberOfEntries(String[][][] textArray, int i, int j, int k, char character) {
-        int entriesAmount = 0;
+    public static int numberOfEntries(String textArray, char character) {
+        String str = textArray.replaceAll(String.valueOf(character), "");
 
-        for (int count = 0; count < textArray[i][j][k].length(); count++) {
-            if (textArray[i][j][k].charAt(count) == character) {
-                entriesAmount++;
-            }
-        }
-
-        return entriesAmount;
+        return (textArray.length() - str.length());
     }
 
     public static void sortNumberOfEntriesArray(int[] numberOfEntriesArray, int[] indexArray, String[][][] textArray, int i, int j) {
