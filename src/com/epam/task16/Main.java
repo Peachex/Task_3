@@ -50,9 +50,7 @@ public class Main {
                 case 1: {
                     System.out.println("1)По возрастанию.\n2)По убыванию.");
                     point2 = in.nextInt();
-
                     flag2 = point2 == 1 ? true : false;
-
                     sortParagraphs(textArray, flag2);
                     break;
                 }
@@ -60,9 +58,7 @@ public class Main {
                 case 2: {
                     System.out.println("1)По возрастанию.\n2)По убыванию.");
                     point2 = in.nextInt();
-
                     flag2 = point2 == 1 ? true : false;
-
                     sortWordsByLength(textArray, flag2);
                     break;
                 }
@@ -70,7 +66,6 @@ public class Main {
                 case 3: {
                     System.out.println("Введите символ: ");
                     String str = in.next();
-
                     sortWordsByNumberOfEntries(textArray, str.charAt(0));
                     break;
                 }
@@ -119,6 +114,7 @@ public class Main {
                 for (int k = 0; k < textArray[i][j].length; k++) {
                     System.out.print(" " + textArray[i][j][indexArray[k]]);
                 }
+                System.out.print("\t");
             }
             System.out.println();
         }
@@ -140,6 +136,7 @@ public class Main {
                 for (int k = 0; k < textArray[i][j].length; k++) {
                     System.out.print(" " + textArray[i][j][indexArray[k]]);
                 }
+                System.out.print("\t");
             }
             System.out.println();
         }
@@ -152,14 +149,20 @@ public class Main {
     }
 
     public static void sortNumberOfEntriesArray(int[] numberOfEntriesArray, int[] indexArray, String[][][] textArray, int i, int j) {
-        for (int a = 0; a < numberOfEntriesArray.length; a++) {
+        boolean flag = true;
+
+        while (flag) {
+            flag = false;
+
             for (int b = 0; b < numberOfEntriesArray.length - 1; b++) {
                 if (numberOfEntriesArray[b] < numberOfEntriesArray[b + 1]) {
                     replace(numberOfEntriesArray, indexArray, b);
+                    flag = true;
                 } else {
                     if (numberOfEntriesArray[b] == numberOfEntriesArray[b + 1] && numberOfEntriesArray[b] != 0) {
                         if (textArray[i][j][indexArray[b]].compareToIgnoreCase(textArray[i][j][indexArray[b + 1]]) > 0) {
                             replace(numberOfEntriesArray, indexArray, b);
+                            flag = true;
                         }
                     }
                 }
@@ -168,15 +171,21 @@ public class Main {
     }
 
     public static void sortArray(int[] array1, int[] array2, boolean flag) {
-        for (int i = 0; i < array1.length; i++) {
+        boolean flag1 = true;
+
+        while (flag1) {
+            flag1 = false;
+
             for (int j = 0; j < array1.length - 1; j++) {
                 if (flag) {
                     if (array1[j] > array1[j + 1]) {
                         replace(array1, array2, j);
+                        flag1 = true;
                     }
                 } else {
                     if (array1[j] < array1[j + 1]) {
                         replace(array1, array2, j);
+                        flag1 = true;
                     }
                 }
             }
