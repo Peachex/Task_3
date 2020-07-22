@@ -37,7 +37,7 @@ public class Main {
         }
 
         for (int i = 1; i < array.length; i++) {
-            if (array[i] >= 'A' && array[i] <= 'Z' && i != 0) {
+            if (array[i] >= 'A' && array[i] <= 'Z') {
                 swap(array, i);
                 array[i] = '_';
                 array[i + 1] = (char) (array[i + 1] + 'a' - 'A');
