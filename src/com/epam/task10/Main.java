@@ -3,9 +3,7 @@ package com.epam.task10;
 // 5. Подсчитать, сколько раз среди символов заданной строки встречается буква “а”.
 public class Main {
     public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("5. Подсчитать, сколько раз среди символов заданной строки встречается буква “а”.");
-
-        System.out.println(sb.toString().replaceAll("[^а]", "").length());
+        String str = "5. Подсчитать, сколько раз среди символов заданной строки встречается буква “а”.";
+        System.out.println(str.replaceAll("[^а]", "").length());
     }
 }
