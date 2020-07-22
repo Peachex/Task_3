@@ -37,10 +37,7 @@ public class Main {
         int point1;
         int point2;
 
-        boolean flag1 = true;
-        boolean flag2;
-
-        while (flag1) {
+        while (true) {
             System.out.println("\n1)Отсортировать абзацы по количеству предложений.\n2)Отсортировать в каждом предложении слова по длине.\n3)Отсортировать лексемы в предложении " +
                     "по убыванию количества вхождений заданного символа, а в случае равенства – по алфавиту.\n4)Выход.");
 
@@ -50,16 +47,14 @@ public class Main {
                 case 1: {
                     System.out.println("1)По возрастанию.\n2)По убыванию.");
                     point2 = in.nextInt();
-                    flag2 = point2 == 1 ? true : false;
-                    sortParagraphs(textArray, flag2);
+                    sortParagraphs(textArray, point2 == 1);
                     break;
                 }
 
                 case 2: {
                     System.out.println("1)По возрастанию.\n2)По убыванию.");
                     point2 = in.nextInt();
-                    flag2 = point2 == 1 ? true : false;
-                    sortWordsByLength(textArray, flag2);
+                    sortWordsByLength(textArray, point2 == 1);
                     break;
                 }
 
@@ -71,7 +66,7 @@ public class Main {
                 }
 
                 case 4: {
-                    flag1 = false;
+                    return;
                 }
             }
         }
